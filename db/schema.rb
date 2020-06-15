@@ -17,13 +17,13 @@ ActiveRecord::Schema.define(version: 2020_06_15_212057) do
     t.string "link"
   end
 
-  create_table "ingredients", force: :cascade do |t|
-    t.string "name"
-  end
-
-  create_table "ingredients_dishes", force: :cascade do |t|
+  create_table "ingredient_dishes", force: :cascade do |t|
     t.integer "dish_id"
     t.integer "ingredient_id"
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string "name"
   end
 
 end

@@ -2,13 +2,13 @@ Dish.destroy_all
 Ingredient.destroy_all
 IngredientDish.destroy_all
 
-lasagna = Dish.new(name:"lasagna")
-chicken_parm = Dish.new(name:"chicken parm")
+lasagna = Dish.create(name:"lasagna")
+chicken_parm = Dish.create(name:"chicken parm")
 
-tomato_sauce = Ingredient.new(name:"tomato sauce")
-mozz = Ingredient.new(name:"mozz")
-olive_oil = Ingredient.new(name:"olive oil")
-basil = Ingredient.new(name:"basil")
+tomato_sauce = Ingredient.create(name:"tomato sauce")
+mozz = Ingredient.create(name:"mozz")
+olive_oil = Ingredient.create(name:"olive oil")
+basil = Ingredient.create(name:"basil")
 lasagna.ingredients << tomato_sauce
 lasagna.ingredients << mozz
 lasagna.ingredients << basil

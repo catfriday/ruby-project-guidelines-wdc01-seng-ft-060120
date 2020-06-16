@@ -16,5 +16,29 @@ class Dish < ActiveRecord::Base
         self.all.sample
     end
 
+    def self.find_ingredients(dish_name)
+        found_dish = self.find_by(name: dish_name)
+        found_dish.dish_to_screen
+    end
+
+    def ingredient_names
+        self.ingredients.map do |ingredient|
+            ingredient.name.downcase
+        end
+    end
+
+    def self.find_by_ingredients(ingredients_array)
+        dish_array = []
+        self.all.each do  |dish|
+            array = dish.ingredient_names
+            if (ingredients_array - array).empty?
+                binding.pry 
+                 dish_array << dish 
+            end    
+         end  
+    end
+
+   
+
     
 end

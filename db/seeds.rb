@@ -1,3 +1,7 @@
+Dish.destroy_all
+Ingredient.destroy_all
+IngredientDish.destroy_all
+
 lasagna = Dish.new(name:"lasagna")
 chicken_parm = Dish.new(name:"chicken parm")
 

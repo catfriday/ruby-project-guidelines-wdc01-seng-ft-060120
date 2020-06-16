@@ -1,3 +1,7 @@
+class CLI
+
+    attr_accessor :user_input
+
 #require_relative '../config/environment'
 def found_by_ingredients(array)
     array.each do  |dish|
@@ -34,12 +38,33 @@ def welcome_message
     puts "".center(100, "-*")
     puts "".center(100, "-*")
     puts "\n\n"
+    self.list_commands
 
 end
+
 def get_user_input_main
     user_input = gets.chomp()
-    #if user_input == help
-    #    list_commands
-    #if user_input.downcase == find dish
-    #    puts 
+    until user_input == "exit"
+        if user_input == "help"
+                list_commands
+                 user_input = gets.chomp()
+            elsif user_input.downcase == "find dish" 
+                puts "Please type list of ingredients seperated only by commas"
+                user_input = gets.chomp()
+                #add find_dish method
+            elsif user_input.downcase == "random dish"
+                    puts "Here is your random dish recipe"
+                    user_input = gets.chomp()
+                    #add random_dish method 
+        end    
+    end
+end
+
+    def run
+        self.welcome_message
+        self.get_user_input_main
+    end 
+
+
+
 end

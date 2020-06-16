@@ -28,14 +28,8 @@ class Dish < ActiveRecord::Base
     end
 
     def self.find_by_ingredients(ingredients_array)
-        dish_array = []
-        self.all.each do |dish|
-            array = dish.ingredient_names
-            if (ingredients_array - array).empty?
-                binding.pry 
-                dish_array << dish 
-            end    
-        end
-        return dish_array 
+        self.all.select do |dish|
+            (ingredients_array - dish.ingredient_names).empty?   
+        end 
     end    
 end

@@ -36,7 +36,7 @@ def welcome_message
     puts "\n\n"
 
 end
-def get_user_input
+def get_user_input_main
     user_input = gets.chomp()
     #if user_input == help
     #    list_commands

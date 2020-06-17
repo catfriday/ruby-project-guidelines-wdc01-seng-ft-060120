@@ -3,15 +3,17 @@ class CLI
     attr_accessor :user_input
 
     #require_relative '../config/environment'
-    def found_by_ingredients(array)
-        array.each do  |dish|
+    def list_recipes(array_of_dishes)
+        #array_of_dishes is an array of dish instances (ex from find_by_ingredients) and formats all of them using 
+        #dish_to_screen
+        array_of_dishes.each do  |dish|
             dish.dish_to_screen
         end
     end
 
-    def my_shopping_list(dish_array)
+    def my_shopping_list(array_of_dishes)
         #iterates through the array, pulls out the ingredient_names, puts them into a list and formats the list
-        array = dish_array.map {|dish| dish.ingredient_names}.flatten.uniq
+        array = array_of_dishes.map {|dish| dish.ingredient_names}.flatten.uniq
         puts "*** Here is your shopping list.***"
         array.each do |ingredient_name|
             puts "- #{ingredient_name}"
@@ -19,6 +21,7 @@ class CLI
     end
 
     def list_commands
+        # Home menu
         puts "".center(100, "-*")
         puts " MENU ".center(100, "-*")
         puts "".center(100, "-*")
@@ -30,6 +33,7 @@ class CLI
     end
 
     def welcome_message
+        #Welcome message and runs list commands 
         puts "\n"
         puts "".center(100, "-*")
         puts " RECIFIND ".center(100, "-*")
@@ -39,23 +43,35 @@ class CLI
         puts "".center(100, "-*")
         puts "\n\n"
         self.list_commands
-
     end
 
     def get_user_input_main
-        user_input = gets.chomp()
-        until user_input == "exit"
-            if user_input == "help"
+        @user_input = gets.chomp()
+        until @user_input == "exit"
+            if @user_input == "help"
                     list_commands
-                    user_input = gets.chomp()
-                elsif user_input.downcase == "find dish" 
-                    puts "Please type list of ingredients seperated only by commas"
-                    user_input = gets.chomp()
+                    @user_input = gets.chomp()
+                elsif @user_input.downcase == "find dish" 
+                    binding.pry
+                    get_user_input_find_dish
                     #add find_dish method
-                elsif user_input.downcase == "random dish"
+                elsif @user_input.downcase == "random dish"
                         puts "Here is your random dish recipe"
-                        user_input = gets.chomp()
-                        #add random_dish method 
+                        @user_input = gets.chomp()
+                        #add random_dish method
+                elsif @user_input.downcase == "my dishes"
+                        puts "these are your dishes"
+                        #give them list of recipes
+                elsif @user_input.downcase == "shopping list"
+                    puts "here is your shopping list!"
+                elsif @user_input.downcase == "done"
+                    binding.pry
+                    puts "Would you like to do anything else? If not, type 'exit' to leave the program"
+                    @user_input = gets.chomp()
+                else
+                    puts "I'm sorry, I don't understand"
+                    puts "please enter another command"
+                    @user_input.downcase = gets.chomp
             end    
         end
     end
@@ -65,6 +81,31 @@ class CLI
         self.get_user_input_main
     end 
 
+    def get_user_input_find_dish
+        puts "Please enter an ingredient."
+        binding.pry
+        ingredients_array = [] #.uniq
+        @user_input = gets.chomp()
+        while @user_input != "done" do
+            # if user_input == "help"
+            #     puts "FIND DISH MENU"
+            #     #make the menu for find dish user input
+            #     user_input = gets.chomp()
+            if Ingredient.all_names.include?(@user_input)
+                binding.pry
+                ingredients_array << @user_input
+                puts ingredients_array ##formatted
+                puts "type 'done' to get your ingredients"
+                @user_input = gets.chomp()
+            else
+                binding.pry
+                puts "Sorry we don't have any recipes with that ingredient."
+                @user_input = gets.chomp
+            end
+        end    
+        binding.pry
+        puts "call find_by ingredient method"
+    end
     
 
 end

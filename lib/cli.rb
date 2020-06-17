@@ -52,20 +52,17 @@ class CLI
                     list_commands
                     @user_input = gets.chomp()
                 elsif @user_input.downcase == "find dish" 
-                    binding.pry
                     get_user_input_find_dish
                     #add find_dish method
                 elsif @user_input.downcase == "random dish"
-                        puts "Here is your random dish recipe"
-                        @user_input = gets.chomp()
-                        #add random_dish method
+                      Dish.find_random_dish 
+                      @user_input = "done" 
                 elsif @user_input.downcase == "my dishes"
                         puts "these are your dishes"
                         #give them list of recipes
                 elsif @user_input.downcase == "shopping list"
                     puts "here is your shopping list!"
                 elsif @user_input.downcase == "done"
-                    binding.pry
                     puts "Would you like to do anything else? If not, type 'exit' to leave the program"
                     @user_input = gets.chomp()
                 else
@@ -83,7 +80,6 @@ class CLI
 
     def get_user_input_find_dish
         puts "Please enter an ingredient."
-        binding.pry
         ingredients_array = [] #.uniq
         @user_input = gets.chomp()
         while @user_input != "done" do
@@ -92,20 +88,17 @@ class CLI
             #     #make the menu for find dish user input
             #     user_input = gets.chomp()
             if Ingredient.all_names.include?(@user_input)
-                binding.pry
                 ingredients_array << @user_input
                 puts ingredients_array ##formatted
                 puts "type 'done' to get your ingredients"
                 @user_input = gets.chomp()
             else
-                binding.pry
                 puts "Sorry we don't have any recipes with that ingredient."
                 @user_input = gets.chomp
             end
         end    
-        binding.pry
-        puts "call find_by ingredient method"
+        a = Dish.find_by_ingredients(ingredients_array)
+        list_recipes(a)
     end
     
-
 end

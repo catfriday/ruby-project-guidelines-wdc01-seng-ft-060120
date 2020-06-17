@@ -33,12 +33,13 @@ class CLI
     end
 
     def welcome_message
+        system 'clear'
         #Welcome message and runs list commands 
         puts "\n"
         puts Rainbow("".center(100, "-*")).crimson
         puts Rainbow("".center(100, "-*")).crimson
         puts Rainbow("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-").crimson + Rainbow(" RECIFIND ").yellow + Rainbow("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-").crimson#.center(100,"-*")).yellow
-        puts Rainbow("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*").crimson + Rainbow(" The word's best recipe finder! ").yellow + Rainbow("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*").crimson#.center(100, "-*")).yellow
+        puts Rainbow("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*").crimson + Rainbow(" The world's best recipe finder! ").yellow + Rainbow("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*").crimson#.center(100, "-*")).yellow
         puts Rainbow("".center(100, "-*")).crimson
         puts Rainbow("".center(100, "-*")).crimson
         puts "\n\n"
@@ -48,14 +49,15 @@ class CLI
         @user_input = gets.chomp()
         until @user_input == "exit"
             if @user_input == "help"
+                    welcome_message
                     list_commands
                     @user_input = gets.chomp()
                 elsif @user_input.downcase == "find dish"
-                    system "clear" 
+                    #system "clear" 
                     get_user_input_find_dish
                     #add find_dish method
                 elsif @user_input.downcase == "random dish"
-                    system "clear"
+                    #system "clear"
                     welcome_message
                     Dish.find_random_dish 
                     @user_input = "done" 
@@ -65,10 +67,10 @@ class CLI
                 elsif @user_input.downcase == "shopping list"
                     puts "here is your shopping list!"
                 elsif @user_input.downcase == "done"
-                    puts "Would you like to do anything else? Type exit to leave the program or type help to see main menu."
+                    puts Rainbow("Would you like to do anything else? Type exit to leave the program or type help to see main menu.").yellow
                     @user_input = gets.chomp()
                 else
-                    system "clear"
+                   # system "clear"
                     welcome_message
                     puts "I'm sorry, I don't understand"
                     puts "please enter another command"
@@ -95,7 +97,7 @@ class CLI
             #     user_input = gets.chomp()
             if Ingredient.all_names.include?(@user_input)
                 ingredients_array << @user_input
-                system "clear"
+                #system "clear"
                 welcome_message
                 puts Rainbow("You've added these ingredients:").yellow 
                 puts ingredients_array ##formatted
@@ -106,7 +108,7 @@ class CLI
                 @user_input = gets.chomp
             end
         end
-        system "clear"
+        #system "clear"
         welcome_message    
         a = Dish.find_by_ingredients(ingredients_array)
         list_recipes(a)

@@ -5,11 +5,16 @@ class Dish < ActiveRecord::Base
     def dish_to_screen 
         #Formats dish to put out to terminal, lists name of dish, link to dish recipe, and a list of ingredients
         #lasagna.dish_to_screen
-        puts "*** #{self.name.upcase}: #{self.link} ***"
-        puts "INGREDIENTS"
+        puts Rainbow("".center(100, "-*")).crimson
+        puts Rainbow("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*").crimson  + Rainbow(" #{self.name.upcase} ".center(32, " ")).yellow + Rainbow("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*").crimson
+        puts Rainbow("".center(100, "-*")).crimson
+        puts "\n"
+        puts Rainbow("INGREDIENTS".center(100)).yellow
+        puts "\n"
         self.ingredients.each do |ingredient|
-            puts "- #{ingredient.name}"
+            puts "#{ingredient.name}".center(100)
         end 
+        puts "\n"
     end
 
     def self.find_random_dish

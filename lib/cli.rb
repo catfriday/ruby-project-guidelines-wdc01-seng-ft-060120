@@ -22,24 +22,25 @@ class CLI
 
     def list_commands
         # Home menu
-        puts "".center(100, "-*")
-        puts " MENU ".center(100, "-*")
-        puts "".center(100, "-*")
-        puts "\n1. Find Dish: Finds a delicious meal based on the ingredients you have at home"
-        puts "\n2. Random Dish: Finds a completely random dish (Warning: only for the adventurous)"
-        puts "\n3. My Dishes: Lists recipes you've added to 'My Dishes.'"
-        puts "\n4. Shopping List: Gives you a list of all the ingredients you'll need to start making your dishes\n\n"
-        puts "What would you like to do?\n\n"
+        puts Rainbow("".center(100, "-*")).crimson 
+        puts Rainbow("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-").crimson + Rainbow(" MENU ").yellow + Rainbow("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-").crimson#.center(100, "-*")).yellow
+        puts Rainbow("".center(100, "-*")).crimson
+        puts Rainbow("\n1. Find Dish:").yellow + " Finds a delicious meal based on the ingredients you have at home"
+        puts Rainbow("\n2. Random Dish:").yellow + " Finds a completely random dish (Warning: only for the adventurous)"
+        puts Rainbow("\n3. My Dishes:").yellow + " Lists recipes you've added to 'My Dishes.'"
+        puts Rainbow("\n4. Shopping List:").yellow + " Gives you a list of all the ingredients you'll need to start making your dishes\n\n"
+        puts Rainbow("What would you like to do?\n\n").crimson
     end
 
     def welcome_message
         #Welcome message and runs list commands 
         puts "\n"
-        puts "".center(100, "-*")
-        puts " RECIFIND ".center(100, "-*")
-        puts " The word's best recipe finder! ".center(100, "-*")
-        puts "".center(100, "-*")
-        puts "".center(100, "-*")
+        puts Rainbow("".center(100, "-*")).crimson
+        puts Rainbow("".center(100, "-*")).crimson
+        puts Rainbow("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-").crimson + Rainbow(" RECIFIND ").yellow + Rainbow("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-").crimson#.center(100,"-*")).yellow
+        puts Rainbow("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*").crimson + Rainbow(" The word's best recipe finder! ").yellow + Rainbow("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*").crimson#.center(100, "-*")).yellow
+        puts Rainbow("".center(100, "-*")).crimson
+        puts Rainbow("".center(100, "-*")).crimson
         puts "\n\n"
     end
 
@@ -96,9 +97,9 @@ class CLI
                 ingredients_array << @user_input
                 system "clear"
                 welcome_message
-                puts "You've added these ingredients:"
+                puts Rainbow("You've added these ingredients:").yellow 
                 puts ingredients_array ##formatted
-                puts "\ntype 'done' to get your ingredients"
+                puts Rainbow("\nType 'done' to get your ingredients").yellow 
                 @user_input = gets.chomp()
             else
                 puts "Sorry we don't have any recipes with that ingredient."

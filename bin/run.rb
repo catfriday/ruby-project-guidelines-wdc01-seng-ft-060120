@@ -6,3 +6,8 @@ require_relative '../config/environment'
 
 cli = CLI.new
 cli.run
+
+
+# puts Rainbow("".center(100, "-*")).yellow
+# puts Rainbow("".center(100, "-*")).crimson
+

@@ -39,8 +39,8 @@ class CLI
         puts "\n"
         puts Rainbow("".center(100, "-*")).crimson
         puts Rainbow("".center(100, "-*")).crimson
-        puts Rainbow("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-").crimson + Rainbow(" RECIFIND ").yellow + Rainbow("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-").crimson#.center(100,"-*")).yellow
-        puts Rainbow("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*").crimson + Rainbow(" The world's best recipe finder! ").yellow + Rainbow("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*").crimson#.center(100, "-*")).yellow
+        puts Rainbow("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-").crimson + Rainbow(" RECIFIND ").yellow + Rainbow("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*").crimson#.center(100,"-*")).yellow
+        puts Rainbow("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*").crimson + Rainbow(" The world's best recipe finder! ").yellow + Rainbow("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*").crimson#.center(100, "-*")).yellow
         puts Rainbow("".center(100, "-*")).crimson
         puts Rainbow("".center(100, "-*")).crimson
         puts "\n\n"

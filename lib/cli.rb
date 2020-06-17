@@ -38,7 +38,6 @@ class CLI
         puts "".center(100, "-*")
         puts " RECIFIND ".center(100, "-*")
         puts " Welcome to Recifind: the word's best recipe finder! ".center(100, "-*")
-        puts " Type 'help' at anytime for a list of commands ".center(100, "-*")
         puts "".center(100, "-*")
         puts "".center(100, "-*")
         puts "\n\n"
@@ -55,6 +54,7 @@ class CLI
                     get_user_input_find_dish
                     #add find_dish method
                 elsif @user_input.downcase == "random dish"
+                
                       Dish.find_random_dish 
                       @user_input = "done" 
                 elsif @user_input.downcase == "my dishes"
@@ -63,7 +63,7 @@ class CLI
                 elsif @user_input.downcase == "shopping list"
                     puts "here is your shopping list!"
                 elsif @user_input.downcase == "done"
-                    puts "Would you like to do anything else? If not, type 'exit' to leave the program"
+                    puts "Would you like to do anything else? Type exit to leave the program or type help to see main menu."
                     @user_input = gets.chomp()
                 else
                     puts "I'm sorry, I don't understand"

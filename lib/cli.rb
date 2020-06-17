@@ -37,11 +37,10 @@ class CLI
         puts "\n"
         puts "".center(100, "-*")
         puts " RECIFIND ".center(100, "-*")
-        puts " Welcome to Recifind: the word's best recipe finder! ".center(100, "-*")
+        puts " The word's best recipe finder! ".center(100, "-*")
         puts "".center(100, "-*")
         puts "".center(100, "-*")
         puts "\n\n"
-        self.list_commands
     end
 
     def get_user_input_main
@@ -50,13 +49,15 @@ class CLI
             if @user_input == "help"
                     list_commands
                     @user_input = gets.chomp()
-                elsif @user_input.downcase == "find dish" 
+                elsif @user_input.downcase == "find dish"
+                    system "clear" 
                     get_user_input_find_dish
                     #add find_dish method
                 elsif @user_input.downcase == "random dish"
-                
-                      Dish.find_random_dish 
-                      @user_input = "done" 
+                    system "clear"
+                    welcome_message
+                    Dish.find_random_dish 
+                    @user_input = "done" 
                 elsif @user_input.downcase == "my dishes"
                         puts "these are your dishes"
                         #give them list of recipes
@@ -66,19 +67,23 @@ class CLI
                     puts "Would you like to do anything else? Type exit to leave the program or type help to see main menu."
                     @user_input = gets.chomp()
                 else
+                    system "clear"
+                    welcome_message
                     puts "I'm sorry, I don't understand"
                     puts "please enter another command"
-                    @user_input.downcase = gets.chomp
+                    @user_input = gets.chomp
             end    
         end
     end
 
     def run
         self.welcome_message
+        self.list_commands
         self.get_user_input_main
     end 
 
     def get_user_input_find_dish
+        welcome_message
         puts "Please enter an ingredient."
         ingredients_array = [] #.uniq
         @user_input = gets.chomp()
@@ -89,14 +94,19 @@ class CLI
             #     user_input = gets.chomp()
             if Ingredient.all_names.include?(@user_input)
                 ingredients_array << @user_input
+                system "clear"
+                welcome_message
+                puts "You've added these ingredients:"
                 puts ingredients_array ##formatted
-                puts "type 'done' to get your ingredients"
+                puts "\ntype 'done' to get your ingredients"
                 @user_input = gets.chomp()
             else
                 puts "Sorry we don't have any recipes with that ingredient."
                 @user_input = gets.chomp
             end
-        end    
+        end
+        system "clear"
+        welcome_message    
         a = Dish.find_by_ingredients(ingredients_array)
         list_recipes(a)
     end

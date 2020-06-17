@@ -5,7 +5,7 @@ class Dish < ActiveRecord::Base
     def dish_to_screen 
         #Formats dish to put out to terminal, lists name of dish, link to dish recipe, and a list of ingredients
         #lasagna.dish_to_screen
-        puts "*** #{self.name}: #{self.link} ***"
+        puts "*** #{self.name.upcase}: #{self.link} ***"
         puts "INGREDIENTS"
         self.ingredients.each do |ingredient|
             puts "- #{ingredient.name}"

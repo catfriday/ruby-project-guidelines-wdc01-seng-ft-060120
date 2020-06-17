@@ -3,6 +3,7 @@ class CLI
     attr_accessor :user_input
 
     #require_relative '../config/environment'
+
     def list_recipes(array_of_dishes)
         #array_of_dishes is an array of dish instances (ex from find_by_ingredients) and formats all of them using 
         #dish_to_screen
@@ -67,13 +68,13 @@ class CLI
                 elsif @user_input.downcase == "shopping list"
                     puts "here is your shopping list!"
                 elsif @user_input.downcase == "done"
-                    puts Rainbow("Would you like to do anything else? Type exit to leave the program or type help to see main menu.").yellow
+                    puts Rainbow("Would you like to do anything else? Type 'exit' to leave the program or type 'help' to see main menu.").yellow
                     @user_input = gets.chomp()
                 else
                    # system "clear"
                     welcome_message
-                    puts "I'm sorry, I don't understand"
-                    puts "please enter another command"
+                    list_commands
+                    puts Rainbow("I'm sorry, I don't understand\nPlease enter another command.").limegreen
                     @user_input = gets.chomp
             end    
         end
@@ -104,14 +105,19 @@ class CLI
                 puts Rainbow("\nAdd another ingredient, or type 'done' when you are finished").yellow 
                 @user_input = gets.chomp()
             else
-                puts "Sorry we don't have any recipes with that ingredient."
+                welcome_message
+                puts Rainbow("Sorry we don't have any recipes with that ingredient.\n Please enter another ingredient.").limegreen
                 @user_input = gets.chomp
             end
         end
         #system "clear"
         welcome_message    
         a = Dish.find_by_ingredients(ingredients_array)
-        list_recipes(a)
+        if a.empty?
+            puts Rainbow("Sorry. We couldn't find any recipes with those ingredients.\n\n").limegreen
+        else
+            list_recipes(a)
+        end
     end
     
 end

@@ -101,7 +101,7 @@ class CLI
                 welcome_message
                 puts Rainbow("You've added these ingredients:").yellow 
                 puts ingredients_array ##formatted
-                puts Rainbow("\nType 'done' to get your ingredients").yellow 
+                puts Rainbow("\nAdd another ingredient, or type 'done' when you are finished").yellow 
                 @user_input = gets.chomp()
             else
                 puts "Sorry we don't have any recipes with that ingredient."

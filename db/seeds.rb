@@ -63,6 +63,8 @@ red_beans.ingredients += [beans, rice, garlic, tomato, meat]
 
 cookies.ingredients += [egg, chocolate_chips, flour, butter]
 
+spaghetti.ingredients += [meat, noodles, tomato_sauce, garlic, basil, olive_oil, parmesan, tomato]
+
 
 
 

@@ -36,8 +36,9 @@ class Dish < ActiveRecord::Base
 
     def self.find_by_ingredients(ingredients_array)
         #takes an array of ingredients (provided by user) and returns all dishes that contain ALL of those ingredients
-        self.all.select do |dish|
+        dish_array = self.all.select do |dish|
             (ingredients_array - dish.ingredient_names).empty?   
-        end 
+        end
+        dish_array.sample(3) 
     end    
 end

@@ -106,7 +106,9 @@ class CLI
                 @user_input = gets.chomp()
             else
                 welcome_message
-                puts Rainbow("Sorry we don't have any recipes with that ingredient.\n Please enter another ingredient.").limegreen
+                puts Rainbow("You've added these ingredients:").yellow 
+                puts ingredients_array
+                puts Rainbow("Sorry we don't have any recipes with that ingredient.\nPlease enter another ingredient.").limegreen
                 @user_input = gets.chomp
             end
         end

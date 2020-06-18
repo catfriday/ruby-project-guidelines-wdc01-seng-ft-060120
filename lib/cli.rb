@@ -28,9 +28,9 @@ class CLI
         puts Rainbow("".center(100, "-*")).crimson
         puts Rainbow("\n1. Find Dish:").yellow + " Finds a delicious meal based on the ingredients you have at home"
         puts Rainbow("\n2. Random Dish:").yellow + " Finds a completely random dish (Warning: only for the adventurous)"
-        puts Rainbow("\n3. My Dishes:").yellow + " Lists recipes you've added to 'My Dishes.'"
-        puts Rainbow("\n4. Shopping List:").yellow + " Gives you a list of all the ingredients you'll need to start making your dishes\n\n"
-        puts Rainbow("What would you like to do?\n\n").crimson
+        # puts Rainbow("\n3. My Dishes:").yellow + " Lists recipes you've added to 'My Dishes.'"
+        # puts Rainbow("\n4. Shopping List:").yellow + " Gives you a list of all the ingredients you'll need to start making your dishes\n\n"
+        puts Rainbow("\nWhat would you like to do?\n\n").crimson
     end
 
     def welcome_message
